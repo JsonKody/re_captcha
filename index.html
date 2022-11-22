@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + Vue + TS</title>
+  </head>
+  <body><button id="button" class="g-recaptcha" 
+    data-sitekey="reCAPTCHA_site_key" 
+    data-callback='onSubmit' 
+    data-action='submit'>Submit</button>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6Lf7xiEjAAAAANd7DBWBF4GFVE_lz7YNmrxHasQ0"></script>
+    <script>
+      const btn = document.getElementById('button')
+
+      btn.addEventListener('click', e => {
+        e.preventDefault();
+        grecaptcha.ready(function() {
+          grecaptcha.execute('6Lf7xiEjAAAAANd7DBWBF4GFVE_lz7YNmrxHasQ0', {action: 'submit'}).then(function(token) {
+              console.log(token)
+          });
+        });
+      })
+
+      
+    </script>
+  </body>
+</html>
